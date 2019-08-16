@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <!-- <h1 v-show="gender == 'female'">Hi mss. {{name}}</h1>
+            <h1 v-show="gender == 'male'">Hi mr. {{name}}</h1>
+            <span>Name</span>
+            <input v-model="name">
+            <span>Gender</span>
+            <input v-model="gender"> -->
+
+            <!-- <span>
+                multiplication table on 5
+            </span>
+            <ul class="list-group">
+                <li v-for=" i in 10" class="list-group-item">
+                   {{i}} multiply on 5 equally {{i*5}}
+                </li>
+            </ul> -->
+
+            <!-- <ul class="list-group">
+                <li v-for=" (value, key, index) in person" :key="index" class="list-group-item">
+
+                       ({{index+1}}) {{key}}: '{{value}}'
+                </li>
+            </ul> -->
+            <!-- <button @click="counter" class="button">Counter {{count}}</button> -->
+            <!-- <form class="form-inline">
+                <input v-model.number="a" @input="calculate" class="form-control">
+                <select v-model="operator" @change ="calculate" class="form-control">
+                    <option>+</option>
+                    <option>-</option>
+                    <option>*</option>
+                    <option>/</option>
+                </select>
+                <input v-model.number="b" @input="calculate"  class="form-control">
+                <button type="submit" @click.prevent="calculate" class="btn btn-primary">
+                    calculate
+                </button>
+            </form>
+            <h2>Результат: {{a}} {{operator}} {{b}} = {{c}}</h2>
+            a={{ a }}, b={{ b }}
+             -->
+            <!-- <input v-model.number="a" class="form-control">
+             <select v-model="operator"  class="form-control">
+                 <option>+</option>
+                 <option>-</option>
+                 <option>*</option>
+                 <option>/</option>
+             </select>
+             <input v-model.number="b" class="form-control">
+
+             <h2>Результат: {{a}} + {{b}} = {{c}}</h2> -->
+            <ul class="list-group">
+                <li v-for=" (mayor, index) in mayors" class="list-group-item">
+                    {{mayor.name}} {{mayor.votes}} <button class="button" @click="mayor.votes++">vote</button>
+                </li>
+            </ul>
+            <h4>Current major {{CurrentMayor.name}}</h4>
+            <pre>{{ $data }}</pre>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            mayors: [
+                {
+                    name: 'Vasia',
+                    votes: 0
+                },
+                {
+                    name: 'Petia',
+                    votes: 0
+                },
+                {
+                    name: 'Ivan',
+                    votes: 0
+                },
+                {
+                    name: 'Ben',
+                    votes: 0
+                },
+            ]
+        },
+        computed: {
+            CurrentMayor: function(){
+                var sortedMajors = this.mayors.sort(function (a, b) {
+                    if (a.votes > b.votes) {
+                        return -1;
+                    }
+                    if (a.votes < b.votes) {
+                        return 1;
+                    }
+                    if (a.votes = b.votes) {
+                        return 0;
+                    }
+                })
+
+                return sortedMajors[0];
+            }
+        },
+        methods: {
+           
+        }
+    })
+</script>
+
+</html>
